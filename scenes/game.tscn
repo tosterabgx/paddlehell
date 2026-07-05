@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://5ei1410cv7"]
+
+[ext_resource type="Script" uid="uid://cjwkdf8wru1g7" path="res://scripts/game.gd" id="1_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://b3ivx53rctng5" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://ct4qb4f07hovp" path="res://scenes/ball.tscn" id="2_yqjtg"]
+[ext_resource type="Texture2D" uid="uid://cge6g3g0flxvk" path="res://assets/dotted.png" id="3_lnu2h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
+size = Vector2(38, 920)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_13qdw"]
+size = Vector2(873.5, 32)
+
+[node name="Game" type="Node2D" unique_id=1238362524]
+script = ExtResource("1_lbhrr")
+gap = 10.0
+start_x = 290.0
+start_y = 70.0
+
+[node name="Player" parent="." unique_id=2025059937 groups=["player"] instance=ExtResource("1_uwrxv")]
+position = Vector2(640, 600)
+min_x = 245.5
+max_x = 1034.5
+min_y = 414.0
+max_y = 709.0
+
+[node name="Ball" parent="." unique_id=1495410964 instance=ExtResource("2_yqjtg")]
+position = Vector2(640, 525)
+
+[node name="Borders" type="StaticBody2D" parent="." unique_id=1479498846]
+
+[node name="Line1" type="Line2D" parent="Borders" unique_id=1288447182]
+position = Vector2(200, 0)
+points = PackedVector2Array(0, -100, 0, 820)
+width = 7.0
+
+[node name="Line2" type="Line2D" parent="Borders" unique_id=1794709579]
+position = Vector2(1080, 0)
+points = PackedVector2Array(0, -100, 0, 820)
+width = 7.0
+
+[node name="Line3" type="Line2D" parent="Borders" unique_id=509022537]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-1.943, 400)
+scale = Vector2(1.0100671, 1)
+points = PackedVector2Array(200, 0, 1080, 0)
+width = 7.0
+texture = ExtResource("3_lnu2h")
+texture_mode = 1
+sharp_limit = 0.0
+
+[node name="Left" type="CollisionShape2D" parent="Borders" unique_id=1422080508]
+position = Vector2(184.5, 360)
+shape = SubResource("RectangleShape2D_xrivr")
+
+[node name="Right" type="CollisionShape2D" parent="Borders" unique_id=711296510]
+position = Vector2(1095.5, 360)
+shape = SubResource("RectangleShape2D_xrivr")
+
+[node name="Top" type="CollisionShape2D" parent="Borders" unique_id=475942715]
+position = Vector2(640.25, -16)
+shape = SubResource("RectangleShape2D_13qdw")
+
+[node name="Bottom" type="CollisionShape2D" parent="Borders" unique_id=1516825318]
+position = Vector2(640.25, 736)
+shape = SubResource("RectangleShape2D_13qdw")
