@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://w8b47th4lu3o"]
+
+[ext_resource type="FontFile" uid="uid://ctophxn74rksh" path="res://fonts/PressStart2P-Regular.ttf" id="1_4ignj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xrivr"]
+font = ExtResource("1_4ignj")
+font_size = 81
+
+[sub_resource type="LabelSettings" id="LabelSettings_4ignj"]
+font = ExtResource("1_4ignj")
+font_size = 32
+
+[node name="YouWon" type="Control" unique_id=293489520]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1102625406]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.78431374)
+
+[node name="Label" type="Label" parent="." unique_id=230596075]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -324.0
+offset_top = -84.5
+offset_right = 324.0
+offset_bottom = -3.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "You Won"
+label_settings = SubResource("LabelSettings_xrivr")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label2" type="Label" parent="." unique_id=2112858768]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -324.0
+offset_top = 35.5
+offset_right = 324.0
+offset_bottom = 116.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press R to restart"
+label_settings = SubResource("LabelSettings_4ignj")
+horizontal_alignment = 1
+vertical_alignment = 1

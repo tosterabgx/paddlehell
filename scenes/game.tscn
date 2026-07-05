@@ -2,8 +2,12 @@
 
 [ext_resource type="Script" uid="uid://cjwkdf8wru1g7" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://b3ivx53rctng5" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://kwjamf7rp3kx" path="res://scripts/camera.gd" id="2_iywne"]
 [ext_resource type="PackedScene" uid="uid://ct4qb4f07hovp" path="res://scenes/ball.tscn" id="2_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://cge6g3g0flxvk" path="res://assets/dotted.png" id="3_lnu2h"]
+[ext_resource type="AudioStream" uid="uid://6fc5a0c4eu4s" path="res://sounds/hell_music.ogg" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://w8b47th4lu3o" path="res://scenes/win.tscn" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://c6dq81df40yes" path="res://scenes/lost.tscn" id="8_gee14"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
 size = Vector2(38, 920)
@@ -11,21 +15,18 @@ size = Vector2(38, 920)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_13qdw"]
 size = Vector2(873.5, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1lj4"]
+size = Vector2(874, 78)
+
 [node name="Game" type="Node2D" unique_id=1238362524]
 script = ExtResource("1_lbhrr")
 gap = 10.0
 start_x = 290.0
 start_y = 70.0
 
-[node name="Player" parent="." unique_id=2025059937 groups=["player"] instance=ExtResource("1_uwrxv")]
-position = Vector2(640, 600)
-min_x = 245.5
-max_x = 1034.5
-min_y = 414.0
-max_y = 709.0
-
-[node name="Ball" parent="." unique_id=1495410964 instance=ExtResource("2_yqjtg")]
-position = Vector2(640, 525)
+[node name="Camera2D" type="Camera2D" parent="." unique_id=490774293]
+position = Vector2(640, 360)
+script = ExtResource("2_iywne")
 
 [node name="Borders" type="StaticBody2D" parent="." unique_id=1479498846]
 
@@ -62,6 +63,126 @@ shape = SubResource("RectangleShape2D_xrivr")
 position = Vector2(640.25, -16)
 shape = SubResource("RectangleShape2D_13qdw")
 
-[node name="Bottom" type="CollisionShape2D" parent="Borders" unique_id=1516825318]
-position = Vector2(640.25, 736)
-shape = SubResource("RectangleShape2D_13qdw")
+[node name="LoseZone" type="Area2D" parent="." unique_id=1040164568]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LoseZone" unique_id=2003373237]
+position = Vector2(640, 795)
+shape = SubResource("RectangleShape2D_b1lj4")
+
+[node name="Player" parent="." unique_id=2025059937 groups=["player"] instance=ExtResource("1_uwrxv")]
+position = Vector2(640, 600)
+min_x = 245.5
+max_x = 1034.5
+min_y = 414.0
+max_y = 709.0
+
+[node name="Ball" parent="." unique_id=1495410964 instance=ExtResource("2_yqjtg")]
+position = Vector2(640, 320)
+
+[node name="Bricks" type="Node2D" parent="." unique_id=1675071082]
+
+[node name="BulletSpawnPoints" type="Node2D" parent="." unique_id=1955565198]
+
+[node name="Marker2D2" type="Marker2D" parent="BulletSpawnPoints" unique_id=1864672404]
+position = Vector2(-94, -163)
+gizmo_extents = 20.0
+
+[node name="Marker2D3" type="Marker2D" parent="BulletSpawnPoints" unique_id=1406083134]
+position = Vector2(66, -260)
+gizmo_extents = 20.0
+
+[node name="Marker2D4" type="Marker2D" parent="BulletSpawnPoints" unique_id=164194533]
+position = Vector2(1484, 16)
+gizmo_extents = 20.0
+
+[node name="Marker2D8" type="Marker2D" parent="BulletSpawnPoints" unique_id=593669467]
+position = Vector2(-281, 681)
+gizmo_extents = 20.0
+
+[node name="Marker2D10" type="Marker2D" parent="BulletSpawnPoints" unique_id=2024315311]
+position = Vector2(1487, 683)
+gizmo_extents = 20.0
+
+[node name="Marker2D11" type="Marker2D" parent="BulletSpawnPoints" unique_id=10927645]
+position = Vector2(-267, 17)
+gizmo_extents = 20.0
+
+[node name="Marker2D14" type="Marker2D" parent="BulletSpawnPoints" unique_id=1057290798]
+position = Vector2(-279, 359)
+gizmo_extents = 20.0
+
+[node name="Marker2D17" type="Marker2D" parent="BulletSpawnPoints" unique_id=1167604256]
+position = Vector2(402, -275)
+gizmo_extents = 20.0
+
+[node name="Marker2D18" type="Marker2D" parent="BulletSpawnPoints" unique_id=1939382562]
+position = Vector2(1171, -256)
+gizmo_extents = 20.0
+
+[node name="Marker2D22" type="Marker2D" parent="BulletSpawnPoints" unique_id=1486487780]
+position = Vector2(926, -275)
+gizmo_extents = 20.0
+
+[node name="Marker2D15" type="Marker2D" parent="BulletSpawnPoints" unique_id=535953630]
+position = Vector2(-268, 170)
+gizmo_extents = 20.0
+
+[node name="Marker2D16" type="Marker2D" parent="BulletSpawnPoints" unique_id=988185374]
+position = Vector2(-280, 539)
+gizmo_extents = 20.0
+
+[node name="Marker2D12" type="Marker2D" parent="BulletSpawnPoints" unique_id=377010770]
+position = Vector2(656, -271)
+gizmo_extents = 20.0
+
+[node name="Marker2D19" type="Marker2D" parent="BulletSpawnPoints" unique_id=1840128481]
+position = Vector2(1484, 361)
+gizmo_extents = 20.0
+
+[node name="Marker2D20" type="Marker2D" parent="BulletSpawnPoints" unique_id=282637759]
+position = Vector2(1482, 165)
+gizmo_extents = 20.0
+
+[node name="Marker2D21" type="Marker2D" parent="BulletSpawnPoints" unique_id=192532790]
+position = Vector2(1486, 552)
+gizmo_extents = 20.0
+
+[node name="Marker2D13" type="Marker2D" parent="BulletSpawnPoints" unique_id=1074738445]
+position = Vector2(1399, -190)
+gizmo_extents = 20.0
+
+[node name="BulletTarget" type="Marker2D" parent="." unique_id=1191565200]
+position = Vector2(640, 560)
+gizmo_extents = 20.0
+
+[node name="Bullets" type="Node2D" parent="." unique_id=648515989]
+
+[node name="HellMode" type="CanvasModulate" parent="." unique_id=289183591]
+visible = false
+color = Color(0.64705884, 0, 0, 1)
+
+[node name="HellMusic" type="AudioStreamPlayer" parent="." unique_id=1402281015]
+stream = ExtResource("6_p57ef")
+volume_db = -7.0
+
+[node name="Timer" type="Node" parent="." unique_id=918679079]
+
+[node name="BulletTimer" type="Timer" parent="Timer" unique_id=1311458935]
+wait_time = 0.25
+
+[node name="HellTimer" type="Timer" parent="Timer" unique_id=1466595640]
+wait_time = 10.0
+one_shot = true
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=648505298]
+
+[node name="YouWon" parent="UI" unique_id=293489520 instance=ExtResource("7_u5sy4")]
+visible = false
+
+[node name="YouLost" parent="UI" unique_id=483105812 instance=ExtResource("8_gee14")]
+visible = false
+
+[connection signal="body_entered" from="LoseZone" to="." method="_on_lose_zone_body_entered"]
+[connection signal="timeout" from="Timer/BulletTimer" to="." method="_on_bullet_timer_timeout"]
+[connection signal="timeout" from="Timer/HellTimer" to="." method="_on_hell_timer_timeout"]

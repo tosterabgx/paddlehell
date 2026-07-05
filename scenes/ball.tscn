@@ -3,13 +3,18 @@
 [ext_resource type="Texture2D" uid="uid://cnb7x2mv7amsn" path="res://assets/ball.png" id="1_7s4qf"]
 [ext_resource type="Script" uid="uid://sgrwuqwu7dg" path="res://scripts/ball.gd" id="1_cxlvu"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_eoqba"]
+light_mode = 1
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_xrivr"]
 radius = 14.0
 
 [node name="Ball" type="CharacterBody2D" unique_id=577612165]
+collision_layer = 5
 script = ExtResource("1_cxlvu")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=879160018]
+material = SubResource("CanvasItemMaterial_eoqba")
 scale = Vector2(7, 7)
 texture = ExtResource("1_7s4qf")
 
