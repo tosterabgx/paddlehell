@@ -164,7 +164,7 @@ color = Color(0.64705884, 0, 0, 1)
 
 [node name="HellMusic" type="AudioStreamPlayer" parent="." unique_id=1402281015]
 stream = ExtResource("6_p57ef")
-volume_db = -7.0
+volume_db = -10.0
 
 [node name="Timer" type="Node" parent="." unique_id=918679079]
 
